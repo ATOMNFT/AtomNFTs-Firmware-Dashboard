@@ -87,6 +87,32 @@
       background: rgba(139, 92, 246, 0.2);
     }
     .hidden { display: none; }
+	footer {
+	  position: fixed;
+	  bottom: 0;
+	  left: 0;
+	  width: 100%;
+	  text-align: center;
+	  padding: 0.75rem 1rem;
+	  font-size: 0.95rem;
+	  color: #94a3b8;
+	  background: rgba(15, 23, 42, 0.6); /* translucent dark bg */
+	  backdrop-filter: blur(10px);
+	  z-index: 100;
+	  box-shadow: 0 0 8px rgba(72, 211, 173, 0.2);
+	}
+
+	footer a {
+	  color: #47d3ad;
+	  text-decoration: none;
+	  font-weight: bold;
+	  text-shadow: 0 0 5px rgba(72, 211, 173, 0.7);
+	}
+
+	footer a:hover {
+	  color: #4fffd5;
+	  text-shadow: 0 0 10px rgba(72, 211, 173, 0.9);
+	}
   </style>
 </head>
 <body>
@@ -152,11 +178,9 @@
     });
   </script>
   
-    <footer style="margin-top: 4rem; text-align: center; font-size: 0.95rem; color: #94a3b8;">
-    Made with lots of ☕ & ❤️ by
-    <a href="https://github.com/ATOMNFT" target="_blank" style="color: #8b5cf6; text-decoration: none; font-weight: bold;">
-      ATOMNFT
-    </a>
+  <footer>
+  Made with lots of ☕ & ❤️ by
+  <a href="https://github.com/ATOMNFT" target="_blank">ATOMNFT</a>
   </footer>
   
 </body>
