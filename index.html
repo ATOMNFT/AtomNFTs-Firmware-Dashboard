@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATOMNFT's Firmware Hub</title>
+  <img src="Images/mainheader.png" alt="Firmware Dashboard Banner" style="display: block; margin: 1.5rem auto 2rem; max-width: 30%; border-radius: 1rem;">
+  <style>
+	body {
+	  background: url('Images/bg.jpg') no-repeat center center fixed;
+	  background-size: cover;
+	  font-family: sans-serif;
+	  color: #e2e8f0;
+	  padding: 2rem;
+	  min-height: 100vh;
+	}
+    h1 {
+      text-align: center;
+      background: linear-gradient(90deg, #8b5cf6, #ec4899);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    select {
+      display: block;
+      margin: 0 auto 2rem;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      border-radius: 0.5rem;
+      border: 1px solid rgba(139, 92, 246, 0.5);
+      background: rgba(67, 56, 202, 0.4);
+      color: #e2e8f0;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 8px rgba(139, 92, 246, 0.4);
+      transition: all 0.3s ease;
+    }
+    select:focus {
+      outline: none;
+      box-shadow: 0 0 12px rgba(139, 92, 246, 0.6);
+      border-color: rgba(139, 92, 246, 0.8);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+	.card {
+	  background: rgba(255, 255, 255, 0.05);
+	  border: 1px solid rgba(255, 255, 255, 0.1);
+	  border-radius: 1rem;
+	  padding: 1.5rem;
+	  backdrop-filter: blur(12px);
+	  -webkit-backdrop-filter: blur(12px);
+	  transition: transform 0.3s ease, box-shadow 0.3s ease;
+	  box-shadow: 0 0 10px rgba(72, 211, 173, 0.20); /* subtle glow idle */
+	}
+	.card:hover {
+	  transform: translateY(-5px);
+	  box-shadow:
+		0 0 20px rgba(72, 211, 173, 0.5),
+		0 0 40px rgba(72, 211, 173, 0.2);
+	}
+    .card h2 {
+      margin-top: 0;
+      color: #fff;
+      font-size: 1.25rem;
+    }
+    .card p {
+      color: #94a3b8;
+      font-size: 0.9375rem;
+    }
+    .card a {
+      display: inline-block;
+      margin-top: 1rem;
+      color: #8b5cf6;
+      text-decoration: none;
+      font-weight: bold;
+      background: rgba(139, 92, 246, 0.1);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      transition: background 0.2s ease;
+    }
+    .card a:hover {
+      background: rgba(139, 92, 246, 0.2);
+    }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <h1>ATOMNFT's Firmware Hub</h1>
+  <select id="deviceFilter">
+    <option value="all">All Devices</option>
+    <option value="tdisplay">T-Display</option>
+    <option value="m5stick">M5StickC</option>
+    <option value="s2mini">ESP32-S2 Mini</option>
+    <option value="wroom">ESP32 Wroom</option>
+    <option value="cyd">CYD</option>
+  </select>
+
+<div class="grid">
+  <div class="card" data-device="tdisplay">
+    <h2>TTGO T-Display Marauder</h2>
+    <p>ESP32 Marauder optimized for the TTGO T-Display board.</p>
+    <a href="https://atomnft.github.io/Marauder-T-display-TTGO/flash0.html" target="_blank">Flash Now</a>
+    <a href="https://github.com/ATOMNFT/Marauder-T-display-TTGO" target="_blank">View Repo</a>
+  </div>
+
+  <div class="card" data-device="m5stick">
+    <h2>M5StickC Marauder</h2>
+    <p>Custom firmware for M5StickC & Plus. Wi-Fi attack & scan tools.</p>
+    <a href="https://atomnft.github.io/M5stick-Marauder/flash0.html" target="_blank">Flash Now</a>
+    <a href="https://github.com/ATOMNFT/M5stick-Marauder" target="_blank">View Repo</a>
+  </div>
+
+  <!--  <div class="card" data-device="m5stick">
+    <h2>Place Holder</h2>
+    <p>Debug version with extra logging and experimental features for dev use.</p>
+    <a href="https://atomnft.github.io/M5stick-Marauder/debug-flash.html" target="_blank">Flash Now</a>
+  </div> -->
+
+  <div class="card" data-device="s2mini">
+    <h2>ESP32-S2 Mini Marauder</h2>
+    <p>Purple ESP32-S2 mini firmware build for Wi-Fi pentesting.</p>
+    <a href="https://atomnft.github.io/ESP32-S2-Mini-Marauder-Build/flash0.html" target="_blank">Flash Now</a>
+    <a href="https://github.com/ATOMNFT/ESP32-S2-Mini-Marauder-Build" target="_blank">View Repo</a>
+  </div>
+
+  <div class="card" data-device="wroom">
+    <h2>ESP32 Wi-Fi Pen Tool</h2>
+    <p>Universal ESP32 Wi-Fi penetration firmware with built-in web UI.</p>
+    <a href="https://atomnft.github.io/ESP32-Wi-Fi-Penetration-Tool/flash0.html" target="_blank">Flash Now</a>
+    <a href="https://github.com/ATOMNFT/ESP32-Wi-Fi-Penetration-Tool" target="_blank">View Repo</a>
+  </div>
+
+  <div class="card" data-device="cyd">
+    <h2>CYD – $PANDA Ticker</h2>
+    <p>Live $PANDA token price displayed on your desk via ESP32.</p>
+    <a href="https://atomnft.github.io/Panda-Token-Ticker/flash0.html" target="_blank">Flash Now</a>
+    <a href="https://github.com/ATOMNFT/Panda-Token-Ticker" target="_blank">View Repo</a>
+  </div>
+</div>
+
+  <script>
+    document.getElementById('deviceFilter').addEventListener('change', function () {
+      const value = this.value;
+      document.querySelectorAll('.card').forEach(card => {
+        card.classList.toggle('hidden', value !== 'all' && card.dataset.device !== value);
+      });
+    });
+  </script>
+</body>
+</html>
