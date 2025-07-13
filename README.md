@@ -1,8 +1,8 @@
 ![Header](Images/mainheader.png)
 
-# 🚀 ATOMNFT Firmware Dashboard
+# 🚀 ESP32 Firmware Dashboard
 
-Welcome to the **ATOMNFT Firmware Dashboard** — your one-stop destination for flashing, exploring, and deploying firmware across a variety of ESP32-based devices.
+Welcome to the **ESP32 Firmware Dashboard** — your one-stop destination for flashing, exploring, and deploying firmware across a variety of ESP32-based devices.
 
 ✨ Built with style, speed, and simplicity in mind.
 
