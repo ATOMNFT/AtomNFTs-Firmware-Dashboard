@@ -15,14 +15,13 @@ Welcome to the **ATOMNFT Firmware Dashboard** — your one-stop destination for 
 
 ## 💾 Supported Devices & Firmwares
 
-| Device             | Flash Link | GitHub Repo |
-|--------------------|------------|-------------|
-| **TTGO T-Display** | [Flash Now](https://atomnft.github.io/Marauder-T-display-TTGO/flash0.html) | [View Repo](https://github.com/ATOMNFT/Marauder-T-display-TTGO) |
-| **M5StickC**       | [Flash Now](https://atomnft.github.io/M5stick-Marauder/flash0.html) | [View Repo](https://github.com/ATOMNFT/M5stick-Marauder) |
-| **ESP32-S2 Mini**  | [Flash Now](https://atomnft.github.io/ESP32-S2-Mini-Marauder-Build/flash0.html) | [View Repo](https://github.com/ATOMNFT/ESP32-S2-Mini-Marauder-Build) |
-| **ESP32 WROOM**    | [Flash Now](https://atomnft.github.io/ESP32-Wi-Fi-Penetration-Tool/flash0.html) | [View Repo](https://github.com/ATOMNFT/ESP32-Wi-Fi-Penetration-Tool) |
-| **CYD (Cheap Yellow Display)**   | [Flash Now](https://atomnft.github.io/Panda-Token-Ticker/flash0.html) | [View Repo](https://github.com/ATOMNFT/Panda-Token-Ticker) |
-
+| Device             | 
+|--------------------|
+| **TTGO T-Display** | 
+| **M5StickC**       |
+| **ESP32-S2 Mini**  | 
+| **ESP32 WROOM**    |
+| **CYD (Cheap Yellow Display)**   |
 ---
 
 ## 🧠 Features
