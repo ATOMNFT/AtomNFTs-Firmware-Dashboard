@@ -8,8 +8,8 @@ Welcome to the **ATOMNFT Firmware Dashboard** — your one-stop destination for 
 
 ## 🌐 Live Site
 
-👉 Visit the hub now:  
-**[atomnft.github.io](https://atomnft.github.io)**
+👉 Visit the Dashboard now:  
+**[Dashboard](https://atomnft.github.io/AtomNFTs-Firmware-Dashboard)**
 
 ---
 
