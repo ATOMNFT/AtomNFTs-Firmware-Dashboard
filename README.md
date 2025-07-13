@@ -13,7 +13,7 @@ Welcome to the **ATOMNFT Firmware Dashboard** — your one-stop destination for 
 
 ---
 
-## 💾 Supported Devices & Firmwares
+## 💾 Supported Devices
 
 | Device             | 
 |--------------------|
@@ -22,6 +22,7 @@ Welcome to the **ATOMNFT Firmware Dashboard** — your one-stop destination for 
 | **ESP32-S2 Mini**  | 
 | **ESP32 WROOM**    |
 | **CYD (Cheap Yellow Display)**   |
+
 ---
 
 ## 🧠 Features
