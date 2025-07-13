@@ -31,7 +31,6 @@ Welcome to the **ATOMNFT Firmware Dashboard** — your one-stop destination for 
 - 🌌 Glassy UI with a dynamic hex-grid background
 - ✨ Glow-on-hover firmware cards
 - 💻 One-click flash tools for supported boards
-- 🐼 Bonus: $PANDA token desk ticker
 
 ---
 
