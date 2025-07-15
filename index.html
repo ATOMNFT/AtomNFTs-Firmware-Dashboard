@@ -54,7 +54,7 @@
 	  backdrop-filter: blur(12px);
 	  -webkit-backdrop-filter: blur(12px);
 	  transition: transform 0.3s ease, box-shadow 0.3s ease;
-	  box-shadow: 0 0 10px rgba(72, 211, 173, 0.20); /* subtle glow idle */
+	  box-shadow: 0 0 10px rgba(72, 211, 173, 0.20);
 	}
 	.card:hover {
 	  transform: translateY(-5px);
@@ -96,7 +96,7 @@
 	  padding: 0.75rem 1rem;
 	  font-size: 0.95rem;
 	  color: #94a3b8;
-	  background: rgba(15, 23, 42, 0.6); /* translucent dark bg */
+	  background: rgba(15, 23, 42, 0.6);
 	  backdrop-filter: blur(10px);
 	  z-index: 100;
 	  box-shadow: 0 0 8px rgba(72, 211, 173, 0.2);
@@ -119,6 +119,13 @@
        display: block;
        margin: 0 auto 1rem;
     }
+	.card small {
+	  display: block;
+	  margin-top: 0.5rem;
+	  color: #7dd3fc;
+	  font-size: 0.8rem;
+	  text-align: center;
+	}
   </style>
 </head>
 <body>
@@ -132,67 +139,85 @@
     <option value="cyd">CYD</option>
   </select>
 
-<div class="grid">
-	<div class="card" data-device="tdisplay">
-	  <img src="Images/tdisplay-icon.png" alt="T-Display Icon" style="width: 64px; display: block; margin: 0 auto 1rem;" />
-	  <h2>TTGO T-Display Marauder</h2>
-	  <p>ESP32 Marauder optimized for the TTGO T-Display board.</p>
-	  <a href="https://atomnft.github.io/Marauder-T-display-TTGO/flash0.html" target="_blank">Flash Now</a>
-	  <a href="https://github.com/ATOMNFT/Marauder-T-display-TTGO" target="_blank">View Repo</a>
-	</div>
+<div class="grid" id="cards"></div>
 
-  <div class="card" data-device="m5stick">
-    <img src="Images/m5sticks-icon.png" alt="M5Sticks Icon" style="width: 64px; display: block; margin: 0 auto 1rem;" />
-    <h2>M5StickC Marauder</h2>
-    <p>Custom firmware for M5StickC & Plus. Wi-Fi attack & scan tools.</p>
-    <a href="https://atomnft.github.io/M5stick-Marauder/flash0.html" target="_blank">Flash Now</a>
-    <a href="https://github.com/ATOMNFT/M5stick-Marauder" target="_blank">View Repo</a>
-  </div>
+<script>
+  const repos = [
+    {
+      name: "TTGO T-Display Marauder",
+      device: "tdisplay",
+      repo: "Marauder-T-display-TTGO",
+      image: "Images/tdisplay-icon.png",
+      desc: "ESP32 Marauder optimized for the TTGO T-Display board.",
+      flash: "https://atomnft.github.io/Marauder-T-display-TTGO/flash0.html"
+    },
+    {
+      name: "ESP32-S2 Mini Marauder",
+      device: "s2mini",
+      repo: "ESP32-S2-Mini-Marauder-Build",
+      image: "Images/s2mini-icon.png",
+      desc: "Purple ESP32-S2 mini firmware build for Wi-Fi pentesting.",
+      flash: "https://atomnft.github.io/ESP32-S2-Mini-Marauder-Build/flash0.html"
+    },
+    {
+      name: "ESP32 Wi-Fi Pen Tool",
+      device: "wroom",
+      repo: "ESP32-Wi-Fi-Penetration-Tool",
+      image: "Images/wroom-icon.png",
+      desc: "Universal ESP32 Wi-Fi penetration firmware with built-in web UI.",
+      flash: "https://atomnft.github.io/ESP32-Wi-Fi-Penetration-Tool/flash0.html"
+    },
+    {
+      name: "CYD – $PANDA Ticker",
+      device: "cyd",
+      repo: "Panda-Token-Ticker",
+      image: "Images/cyd-icon.png",
+      desc: "Live $PANDA token price displayed on your desk via ESP32.",
+      flash: "https://atomnft.github.io/Panda-Token-Ticker/flash0.html"
+    }
+  ];
 
-  <!--  <div class="card" data-device="m5stick">
-    <h2>Place Holder</h2>
-    <p>Debug version with extra logging and experimental features for dev use.</p>
-    <a href="https://atomnft.github.io/M5stick-Marauder/debug-flash.html" target="_blank">Flash Now</a>
-  </div> -->
+  async function fetchManifest(repo) {
+    const url = `https://raw.githubusercontent.com/ATOMNFT/${repo}/main/manifest.json`;
+    try {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error("Not found");
+      return await res.json();
+    } catch {
+      return null;
+    }
+  }
 
-  <div class="card" data-device="s2mini">
-    <img src="Images/s2mini-icon.png" alt="s2mini Icon" style="width: 64px; display: block; margin: 0 auto 1rem;" />
-    <h2>ESP32-S2 Mini Marauder</h2>
-    <p>Purple ESP32-S2 mini firmware build for Wi-Fi pentesting.</p>
-    <a href="https://atomnft.github.io/ESP32-S2-Mini-Marauder-Build/flash0.html" target="_blank">Flash Now</a>
-    <a href="https://github.com/ATOMNFT/ESP32-S2-Mini-Marauder-Build" target="_blank">View Repo</a>
-  </div>
+  async function loadCards() {
+    const grid = document.getElementById("cards");
+    for (const r of repos) {
+      const manifest = await fetchManifest(r.repo);
+      const versionTag = manifest && manifest.version ? `<small>v${manifest.version}</small>` : "";
+      grid.innerHTML += `
+        <div class="card" data-device="${r.device}">
+          <img src="${r.image}" alt="${r.device} Icon">
+          <h2>${r.name}</h2>
+          <p>${r.desc}</p>
+          <a href="${r.flash}" target="_blank">Flash Now</a>
+          <a href="https://github.com/ATOMNFT/${r.repo}" target="_blank">View Repo</a>
+          ${versionTag}
+        </div>`;
+    }
+  }
+  loadCards();
 
-  <div class="card" data-device="wroom">
-    <img src="Images/wroom-icon.png" alt="wroom Icon" style="width: 64px; display: block; margin: 0 auto 1rem;" />
-    <h2>ESP32 Wi-Fi Pen Tool</h2>
-    <p>Universal ESP32 Wi-Fi penetration firmware with built-in web UI.</p>
-    <a href="https://atomnft.github.io/ESP32-Wi-Fi-Penetration-Tool/flash0.html" target="_blank">Flash Now</a>
-    <a href="https://github.com/ATOMNFT/ESP32-Wi-Fi-Penetration-Tool" target="_blank">View Repo</a>
-  </div>
-
-  <div class="card" data-device="cyd">
-    <img src="Images/cyd-icon.png" alt="cyd Icon" style="width: 64px; display: block; margin: 0 auto 1rem;" />
-    <h2>CYD – $PANDA Ticker</h2>
-    <p>Live $PANDA token price displayed on your desk via ESP32.</p>
-    <a href="https://atomnft.github.io/Panda-Token-Ticker/flash0.html" target="_blank">Flash Now</a>
-    <a href="https://github.com/ATOMNFT/Panda-Token-Ticker" target="_blank">View Repo</a>
-  </div>
-</div>
-
-  <script>
-    document.getElementById('deviceFilter').addEventListener('change', function () {
-      const value = this.value;
-      document.querySelectorAll('.card').forEach(card => {
-        card.classList.toggle('hidden', value !== 'all' && card.dataset.device !== value);
-      });
+  document.getElementById('deviceFilter').addEventListener('change', function () {
+    const value = this.value;
+    document.querySelectorAll('.card').forEach(card => {
+      card.classList.toggle('hidden', value !== 'all' && card.dataset.device !== value);
     });
-  </script>
-  
-  <footer>
+  });
+</script>
+
+<footer>
   Made with lots of ☕ & ❤️ by
   <a href="https://github.com/ATOMNFT" target="_blank">ATOMNFT</a>
-  </footer>
-  
+</footer>
+
 </body>
 </html>
