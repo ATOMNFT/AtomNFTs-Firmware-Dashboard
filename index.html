@@ -5,165 +5,165 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ESP32 Firmware Dashboard</title>
   <img src="Images/mainheader.png" alt="Firmware Dashboard Banner" style="display: block; margin: 1.5rem auto 2rem; max-width: 30%; border-radius: 1rem;">
-<style>
-  body {
-    background: url('Images/bg.jpg') no-repeat center center fixed;
-    background-size: cover;
-    font-family: sans-serif;
-    color: #e2e8f0;
-    padding: 2rem;
-    min-height: 100vh;
-  }
+	<style>
+	  body {
+		background: url('Images/bg.jpg') no-repeat center center fixed;
+		background-size: cover;
+		font-family: sans-serif;
+		color: #e2e8f0;
+		padding: 2rem;
+		min-height: 100vh;
+	  }
 
-  h1 {
-    text-align: center;
-    background: linear-gradient(90deg, #8b5cf6, #ec4899);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
+	  h1 {
+		text-align: center;
+		background: linear-gradient(90deg, #8b5cf6, #ec4899);
+		-webkit-background-clip: text;
+		background-clip: text;
+		color: transparent;
+		font-size: 2.5rem;
+		margin-bottom: 1rem;
+	  }
 
-  select {
-    display: block;
-    margin: 0 auto 2rem;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    border-radius: 0.5rem;
-    border: 1px solid rgba(139, 92, 246, 0.5);
-    background: rgba(67, 56, 202, 0.4);
-    color: #e2e8f0;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 0 8px rgba(139, 92, 246, 0.4);
-    transition: all 0.3s ease;
-  }
+	  select {
+		display: block;
+		margin: 0 auto 2rem;
+		padding: 0.5rem 1rem;
+		font-size: 1rem;
+		border-radius: 0.5rem;
+		border: 1px solid rgba(139, 92, 246, 0.5);
+		background: rgba(67, 56, 202, 0.4);
+		color: #e2e8f0;
+		backdrop-filter: blur(10px);
+		box-shadow: 0 0 8px rgba(139, 92, 246, 0.4);
+		transition: all 0.3s ease;
+	  }
 
-  select:focus {
-    outline: none;
-    box-shadow: 0 0 12px rgba(139, 92, 246, 0.6);
-    border-color: rgba(139, 92, 246, 0.8);
-  }
+	  select:focus {
+		outline: none;
+		box-shadow: 0 0 12px rgba(139, 92, 246, 0.6);
+		border-color: rgba(139, 92, 246, 0.8);
+	  }
 
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
-  }
+	  .grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+		gap: 1.5rem;
+	  }
 
-  .card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 1rem;
-    padding: 1.5rem;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 0 10px rgba(72, 211, 173, 0.20);
-  }
+	  .card {
+		background: rgba(255, 255, 255, 0.05);
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		border-radius: 1rem;
+		padding: 1.5rem;
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
+		box-shadow: 0 0 10px rgba(72, 211, 173, 0.20);
+	  }
 
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow:
-      0 0 20px rgba(72, 211, 173, 0.5),
-      0 0 40px rgba(72, 211, 173, 0.2);
-  }
+	  .card:hover {
+		transform: translateY(-5px);
+		box-shadow:
+		  0 0 20px rgba(72, 211, 173, 0.5),
+		  0 0 40px rgba(72, 211, 173, 0.2);
+	  }
 
-  .card h2 {
-    margin-top: 0;
-    color: #fff;
-    font-size: 1.25rem;
-  }
+	  .card h2 {
+		margin-top: 0;
+		color: #fff;
+		font-size: 1.25rem;
+	  }
 
-  .card p {
-    color: #94a3b8;
-    font-size: 0.9375rem;
-  }
+	  .card p {
+		color: #94a3b8;
+		font-size: 0.9375rem;
+	  }
 
-  /* Button-style links only */
-  .card > a {
-    display: inline-block;
-    margin-top: 1rem;
-    margin-right: 0.5rem;
-    color: #8b5cf6;
-    text-decoration: none;
-    font-weight: bold;
-    background: rgba(139, 92, 246, 0.1);
-    border: 1px solid rgba(139, 92, 246, 0.2);
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    transition: background 0.2s ease;
-  }
+	  /* Button-style links only */
+	  .card > a {
+		display: inline-block;
+		margin-top: 1rem;
+		margin-right: 0.5rem;
+		color: #8b5cf6;
+		text-decoration: none;
+		font-weight: bold;
+		background: rgba(139, 92, 246, 0.1);
+		border: 1px solid rgba(139, 92, 246, 0.2);
+		padding: 0.5rem 1rem;
+		border-radius: 0.5rem;
+		transition: background 0.2s ease;
+	  }
 
-  .card > a:hover {
-    background: rgba(139, 92, 246, 0.2);
-  }
+	  .card > a:hover {
+		background: rgba(139, 92, 246, 0.2);
+	  }
 
-  /* Inline description links */
-  .card p a {
-    display: inline;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    background: none;
-    border-radius: 0;
-    color: #47d3ad;
-    text-decoration: underline;
-    font-weight: normal;
-    box-shadow: none;
-  }
+	  /* Inline description links */
+	  .card p a {
+		display: inline;
+		margin: 0;
+		padding: 0;
+		border: 0;
+		background: none;
+		border-radius: 0;
+		color: #47d3ad;
+		text-decoration: underline;
+		font-weight: normal;
+		box-shadow: none;
+	  }
 
-  .card p a:hover {
-    background: none;
-    color: #4fffd5;
-    text-shadow: 0 0 6px rgba(72, 211, 173, 0.5);
-  }
+	  .card p a:hover {
+		background: none;
+		color: #4fffd5;
+		text-shadow: 0 0 6px rgba(72, 211, 173, 0.5);
+	  }
 
-  .hidden {
-    display: none;
-  }
+	  .hidden {
+		display: none;
+	  }
 
-  footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    padding: 0.75rem 1rem;
-    font-size: 0.95rem;
-    color: #94a3b8;
-    background: rgba(15, 23, 42, 0.6);
-    backdrop-filter: blur(10px);
-    z-index: 100;
-    box-shadow: 0 0 8px rgba(72, 211, 173, 0.2);
-  }
+	  footer {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		text-align: center;
+		padding: 0.75rem 1rem;
+		font-size: 0.95rem;
+		color: #94a3b8;
+		background: rgba(15, 23, 42, 0.6);
+		backdrop-filter: blur(10px);
+		z-index: 100;
+		box-shadow: 0 0 8px rgba(72, 211, 173, 0.2);
+	  }
 
-  footer a {
-    color: #47d3ad;
-    text-decoration: none;
-    font-weight: bold;
-    text-shadow: 0 0 5px rgba(72, 211, 173, 0.7);
-  }
+	  footer a {
+		color: #47d3ad;
+		text-decoration: none;
+		font-weight: bold;
+		text-shadow: 0 0 5px rgba(72, 211, 173, 0.7);
+	  }
 
-  footer a:hover {
-    color: #4fffd5;
-    text-shadow: 0 0 10px rgba(72, 211, 173, 0.9);
-  }
+	  footer a:hover {
+		color: #4fffd5;
+		text-shadow: 0 0 10px rgba(72, 211, 173, 0.9);
+	  }
 
-  .card img {
-    width: 64px;
-    display: block;
-    margin: 0 auto 1rem;
-  }
+	  .card img {
+		width: 64px;
+		display: block;
+		margin: 0 auto 1rem;
+	  }
 
-  .card small {
-    display: block;
-    margin-top: 0.5rem;
-    color: #7dd3fc;
-    font-size: 0.8rem;
-    text-align: center;
-  }
-</style>
+	  .card small {
+		display: block;
+		margin-top: 0.5rem;
+		color: #7dd3fc;
+		font-size: 0.8rem;
+		text-align: center;
+	  }
+	</style>
 </head>
 <body>
   <h1>ESP32 Firmware Dashboard</h1>
