@@ -4,180 +4,185 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ESP32 Firmware Dashboard</title>
-  <img src="Images/mainheader.png" alt="Firmware Dashboard Banner" style="display: block; margin: 1.5rem auto 2rem; max-width: 30%; border-radius: 1rem;">
-	<style>
-	  body {
-		background: url('Images/bg.jpg') no-repeat center center fixed;
-		background-size: cover;
-		font-family: sans-serif;
-		color: #e2e8f0;
-		padding: 2rem;
-		min-height: 100vh;
-	  }
 
-	  h1 {
-		text-align: center;
-		background: linear-gradient(90deg, #8b5cf6, #ec4899);
-		-webkit-background-clip: text;
-		background-clip: text;
-		color: transparent;
-		font-size: 2.5rem;
-		margin-bottom: 1rem;
-	  }
+  <style>
+    body {
+      background: url('Images/bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: sans-serif;
+      color: #e2e8f0;
+      padding: 2rem;
+      padding-bottom: 6rem;
+      min-height: 100vh;
+    }
 
-	  select {
-		display: block;
-		margin: 0 auto 2rem;
-		padding: 0.5rem 1rem;
-		font-size: 1rem;
-		border-radius: 0.5rem;
-		border: 1px solid rgba(139, 92, 246, 0.5);
-		background: rgba(67, 56, 202, 0.4);
-		color: #e2e8f0;
-		backdrop-filter: blur(10px);
-		box-shadow: 0 0 8px rgba(139, 92, 246, 0.4);
-		transition: all 0.3s ease;
-	  }
+    h1 {
+      text-align: center;
+      background: linear-gradient(90deg, #8b5cf6, #ec4899);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
 
-	  select:focus {
-		outline: none;
-		box-shadow: 0 0 12px rgba(139, 92, 246, 0.6);
-		border-color: rgba(139, 92, 246, 0.8);
-	  }
+    select {
+      display: block;
+      margin: 0 auto 2rem;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      border-radius: 0.5rem;
+      border: 1px solid rgba(139, 92, 246, 0.5);
+      background: rgba(67, 56, 202, 0.4);
+      color: #e2e8f0;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 8px rgba(139, 92, 246, 0.4);
+      transition: all 0.3s ease;
+    }
 
-	  .grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-		gap: 1.5rem;
-	  }
+    select:focus {
+      outline: none;
+      box-shadow: 0 0 12px rgba(139, 92, 246, 0.6);
+      border-color: rgba(139, 92, 246, 0.8);
+    }
 
-	  .card {
-		background: rgba(255, 255, 255, 0.05);
-		border: 1px solid rgba(255, 255, 255, 0.1);
-		border-radius: 1rem;
-		padding: 1.5rem;
-		backdrop-filter: blur(12px);
-		-webkit-backdrop-filter: blur(12px);
-		transition: transform 0.3s ease, box-shadow 0.3s ease;
-		box-shadow: 0 0 10px rgba(72, 211, 173, 0.20);
-	  }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
 
-	  .card:hover {
-		transform: translateY(-5px);
-		box-shadow:
-		  0 0 20px rgba(72, 211, 173, 0.5),
-		  0 0 40px rgba(72, 211, 173, 0.2);
-	  }
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 0 10px rgba(72, 211, 173, 0.20);
+    }
 
-	  .card h2 {
-		margin-top: 0;
-		color: #fff;
-		font-size: 1.25rem;
-	  }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow:
+        0 0 20px rgba(72, 211, 173, 0.5),
+        0 0 40px rgba(72, 211, 173, 0.2);
+    }
 
-	  .card p {
-		color: #94a3b8;
-		font-size: 0.9375rem;
-	  }
+    .card h2 {
+      margin-top: 0;
+      color: #fff;
+      font-size: 1.25rem;
+    }
 
-	  /* Button-style links only */
-	  .card > a {
-		display: inline-block;
-		margin-top: 1rem;
-		margin-right: 0.5rem;
-		color: #8b5cf6;
-		text-decoration: none;
-		font-weight: bold;
-		background: rgba(139, 92, 246, 0.1);
-		border: 1px solid rgba(139, 92, 246, 0.2);
-		padding: 0.5rem 1rem;
-		border-radius: 0.5rem;
-		transition: background 0.2s ease;
-	  }
+    .card p {
+      color: #94a3b8;
+      font-size: 0.9375rem;
+    }
 
-	  .card > a:hover {
-		background: rgba(139, 92, 246, 0.2);
-	  }
+    /* Button-style links only */
+    .card > a {
+      display: inline-block;
+      margin-top: 1rem;
+      margin-right: 0.5rem;
+      color: #8b5cf6;
+      text-decoration: none;
+      font-weight: bold;
+      background: rgba(139, 92, 246, 0.1);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      transition: background 0.2s ease;
+    }
 
-	  /* Inline description links */
-	  .card p a {
-		display: inline;
-		margin: 0;
-		padding: 0;
-		border: 0;
-		background: none;
-		border-radius: 0;
-		color: #47d3ad;
-		text-decoration: underline;
-		font-weight: normal;
-		box-shadow: none;
-	  }
+    .card > a:hover {
+      background: rgba(139, 92, 246, 0.2);
+    }
 
-	  .card p a:hover {
-		background: none;
-		color: #4fffd5;
-		text-shadow: 0 0 6px rgba(72, 211, 173, 0.5);
-	  }
+    /* Inline description links */
+    .card p a {
+      display: inline;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: none;
+      border-radius: 0;
+      color: #47d3ad;
+      text-decoration: underline;
+      font-weight: normal;
+      box-shadow: none;
+    }
 
-	  .hidden {
-		display: none;
-	  }
+    .card p a:hover {
+      background: none;
+      color: #4fffd5;
+      text-shadow: 0 0 6px rgba(72, 211, 173, 0.5);
+    }
 
-		footer {
-		  position: fixed;
-		  bottom: 0;
-		  left: 0;
-		  width: 100%;
-		  text-align: center;
-		  padding: 0.75rem 1rem;
-		  font-size: 0.95rem;
-		  color: #94a3b8;
-		  background: rgba(15, 23, 42, 0.6);
-		  backdrop-filter: blur(10px);
-		  z-index: 100;
-		  box-shadow: 0 0 8px rgba(72, 211, 173, 0.2);
+    .hidden {
+      display: none;
+    }
 
-		  opacity: 0;
-		  transform: translateY(100%);
-		  pointer-events: none;
-		  transition: opacity 0.3s ease, transform 0.3s ease;
-		}
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      padding: 0.75rem 1rem;
+      font-size: 0.95rem;
+      color: #94a3b8;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 100;
+      box-shadow: 0 0 8px rgba(72, 211, 173, 0.2);
 
-		footer.show-footer {
-		  opacity: 1;
-		  transform: translateY(0);
-		  pointer-events: auto;
-		}
+      opacity: 0;
+      transform: translateY(100%);
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
 
-	  footer a {
-		color: #47d3ad;
-		text-decoration: none;
-		font-weight: bold;
-		text-shadow: 0 0 5px rgba(72, 211, 173, 0.7);
-	  }
+    footer.show-footer {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
 
-	  footer a:hover {
-		color: #4fffd5;
-		text-shadow: 0 0 10px rgba(72, 211, 173, 0.9);
-	  }
+    footer a {
+      color: #47d3ad;
+      text-decoration: none;
+      font-weight: bold;
+      text-shadow: 0 0 5px rgba(72, 211, 173, 0.7);
+    }
 
-	  .card img {
-		width: 64px;
-		display: block;
-		margin: 0 auto 1rem;
-	  }
+    footer a:hover {
+      color: #4fffd5;
+      text-shadow: 0 0 10px rgba(72, 211, 173, 0.9);
+    }
 
-	  .card small {
-		display: block;
-		margin-top: 0.5rem;
-		color: #7dd3fc;
-		font-size: 0.8rem;
-		text-align: center;
-	  }
-	</style>
+    .card img {
+      width: 64px;
+      display: block;
+      margin: 0 auto 1rem;
+    }
+
+    .card small {
+      display: block;
+      margin-top: 0.5rem;
+      color: #7dd3fc;
+      font-size: 0.8rem;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
+  <img src="Images/mainheader.png" alt="Firmware Dashboard Banner" style="display: block; margin: 1.5rem auto 2rem; max-width: 30%; border-radius: 1rem;">
+
   <h1>ESP32 Firmware Dashboard</h1>
+
   <select id="deviceFilter">
     <option value="all">All Devices</option>
     <option value="tdisplay">T-Display</option>
@@ -187,121 +192,124 @@
     <option value="cyd">CYD</option>
   </select>
 
-<div class="grid" id="cards"></div>
+  <div class="grid" id="cards"></div>
 
-<script>
-const repos = [
-  {
-    name: "TTGO T-Display Marauder",
-    device: "tdisplay",
-    repo: "Marauder-T-display-TTGO",
-    image: "Images/tdisplay-icon.png",
-    desc: "ESP32 Marauder optimized for the TTGO T-Display board.",
-    flash: "https://atomnft.github.io/Marauder-T-display-TTGO/flash0.html"
-  },
-  {
-    name: "ESP32-S2 Mini Marauder",
-    device: "s2mini",
-    repo: "ESP32-S2-Mini-Marauder-Build",
-    image: "Images/s2mini-icon.png",
-    desc: "Purple ESP32-S2 mini firmware build for Wi-Fi pentesting.",
-    flash: "https://atomnft.github.io/ESP32-S2-Mini-Marauder-Build/flash0.html"
-  },
-  {
-    name: "ESP32 Wi-Fi Pen Tool",
-    device: "wroom",
-    repo: "ESP32-Wi-Fi-Penetration-Tool",
-    image: "Images/wroom-icon.png",
-    desc: "Universal ESP32 Wi-Fi penetration firmware with built-in web UI.",
-    flash: "https://atomnft.github.io/ESP32-Wi-Fi-Penetration-Tool/flash0.html"
-  },
-  {
-    name: "CYD – $PANDA Ticker",
-    device: "cyd",
-    repo: "Panda-Token-Ticker",
-    image: "Images/cyd-icon.png",
-    desc: "Live $PANDA token price displayed on your desk via ESP32.",
-    flash: "https://atomnft.github.io/Panda-Token-Ticker/flash0.html"
-  },
-  {
-    name: "CYD – Fancygotchi Port",
-    device: "cyd",
-    repo: "Fancygotchi-CYD-port-flasher",
-    image: "Images/cyd-icon.png",
-    desc: "A port of the fancygotchi for raspberry pi by Xombi3.",
-    flash: "https://atomnft.github.io/Fancygotchi-CYD-port-flasher/flash0.html"
-  },
-  {
-    name: "CYD – WiFi Hash Monster Port",
-    device: "cyd",
-    repo: "CYD-WiFi-Hash-Monster-Port-Flasher",
-    image: "Images/cyd-icon.png",
-    desc: 'A port of the WiFi Hash Monster by <a href="https://github.com/G4lile0" target="_blank" rel="noopener noreferrer">Galile0</a>.',
-    flash: "https://atomnft.github.io/CYD-WiFi-Hash-Monster-Port-Flasher/flash0.html"
-  }
-];
+  <footer id="pageFooter">
+    Made with lots of ☕ & ❤️ by
+    <a href="https://github.com/ATOMNFT" target="_blank" rel="noopener noreferrer">ATOMNFT</a>
+  </footer>
 
-async function fetchManifest(repo) {
-  const url = `https://raw.githubusercontent.com/ATOMNFT/${repo}/main/manifest.json`;
-  try {
-    const res = await fetch(url);
-    if (!res.ok) throw new Error("Not found");
-    return await res.json();
-  } catch {
-    return null;
-  }
-}
+  <script>
+    const repos = [
+      {
+        name: "TTGO T-Display Marauder",
+        device: "tdisplay",
+        repo: "Marauder-T-display-TTGO",
+        image: "Images/tdisplay-icon.png",
+        desc: "ESP32 Marauder optimized for the TTGO T-Display board.",
+        flash: "https://atomnft.github.io/Marauder-T-display-TTGO/flash0.html"
+      },
+      {
+        name: "ESP32-S2 Mini Marauder",
+        device: "s2mini",
+        repo: "ESP32-S2-Mini-Marauder-Build",
+        image: "Images/s2mini-icon.png",
+        desc: "Purple ESP32-S2 mini firmware build for Wi-Fi pentesting.",
+        flash: "https://atomnft.github.io/ESP32-S2-Mini-Marauder-Build/flash0.html"
+      },
+      {
+        name: "ESP32 Wi-Fi Pen Tool",
+        device: "wroom",
+        repo: "ESP32-Wi-Fi-Penetration-Tool",
+        image: "Images/wroom-icon.png",
+        desc: "Universal ESP32 Wi-Fi penetration firmware with built-in web UI.",
+        flash: "https://atomnft.github.io/ESP32-Wi-Fi-Penetration-Tool/flash0.html"
+      },
+      {
+        name: "CYD – $PANDA Ticker",
+        device: "cyd",
+        repo: "Panda-Token-Ticker",
+        image: "Images/cyd-icon.png",
+        desc: "Live $PANDA token price displayed on your desk via ESP32.",
+        flash: "https://atomnft.github.io/Panda-Token-Ticker/flash0.html"
+      },
+      {
+        name: "CYD – Fancygotchi Port",
+        device: "cyd",
+        repo: "Fancygotchi-CYD-port-flasher",
+        image: "Images/cyd-icon.png",
+        desc: "A port of the fancygotchi for raspberry pi by Xombi3.",
+        flash: "https://atomnft.github.io/Fancygotchi-CYD-port-flasher/flash0.html"
+      },
+      {
+        name: "CYD – WiFi Hash Monster Port",
+        device: "cyd",
+        repo: "CYD-WiFi-Hash-Monster-Port-Flasher",
+        image: "Images/cyd-icon.png",
+        desc: 'A port of the WiFi Hash Monster by <a href="https://github.com/G4lile0" target="_blank" rel="noopener noreferrer">Galile0</a>.',
+        flash: "https://atomnft.github.io/CYD-WiFi-Hash-Monster-Port-Flasher/flash0.html"
+      }
+    ];
 
-async function loadCards() {
-  const grid = document.getElementById("cards");
-  for (const r of repos) {
-    const manifest = await fetchManifest(r.repo);
-    const versionTag = manifest && manifest.version ? `<small>v${manifest.version}</small>` : "";
-    grid.innerHTML += `
-      <div class="card" data-device="${r.device}">
-        <img src="${r.image}" alt="${r.device} Icon">
-        <h2>${r.name}</h2>
-        <p>${r.desc}</p>
-        <a href="${r.flash}" target="_blank" rel="noopener noreferrer">Flash Now</a>
-        <a href="https://github.com/ATOMNFT/${r.repo}" target="_blank" rel="noopener noreferrer">View Repo</a>
-        ${versionTag}
-      </div>`;
-  }
+    async function fetchManifest(repo) {
+      const url = `https://raw.githubusercontent.com/ATOMNFT/${repo}/main/manifest.json`;
+      try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error("Not found");
+        return await res.json();
+      } catch {
+        return null;
+      }
+    }
 
-  checkFooterVisibility();
-}
+    function checkFooterVisibility() {
+      const footer = document.getElementById("pageFooter");
+      if (!footer) return;
 
-loadCards();
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const windowHeight = window.innerHeight;
+      const fullHeight = document.documentElement.scrollHeight;
 
-document.getElementById('deviceFilter').addEventListener('change', function () {
-  const value = this.value;
-  document.querySelectorAll('.card').forEach(card => {
-    card.classList.toggle('hidden', value !== 'all' && card.dataset.device !== value);
-  });
+      const atBottom = scrollTop + windowHeight >= fullHeight - 50;
+      footer.classList.toggle("show-footer", atBottom);
+    }
 
-  checkFooterVisibility();
-});
+    async function loadCards() {
+      const grid = document.getElementById("cards");
+      grid.innerHTML = "";
 
-const footer = document.getElementById("pageFooter");
+      for (const r of repos) {
+        const manifest = await fetchManifest(r.repo);
+        const versionTag = manifest && manifest.version ? `<small>v${manifest.version}</small>` : "";
 
-function checkFooterVisibility() {
-  const scrollTop = window.scrollY;
-  const windowHeight = window.innerHeight;
-  const fullHeight = document.documentElement.scrollHeight;
+        grid.innerHTML += `
+          <div class="card" data-device="${r.device}">
+            <img src="${r.image}" alt="${r.device} Icon">
+            <h2>${r.name}</h2>
+            <p>${r.desc}</p>
+            <a href="${r.flash}" target="_blank" rel="noopener noreferrer">Flash Now</a>
+            <a href="https://github.com/ATOMNFT/${r.repo}" target="_blank" rel="noopener noreferrer">View Repo</a>
+            ${versionTag}
+          </div>`;
+      }
 
-  const atBottom = scrollTop + windowHeight >= fullHeight - 4;
-  footer.classList.toggle("show-footer", atBottom);
-}
+      checkFooterVisibility();
+    }
 
-window.addEventListener("scroll", checkFooterVisibility);
-window.addEventListener("resize", checkFooterVisibility);
-window.addEventListener("load", checkFooterVisibility);
-</script>
+    document.getElementById("deviceFilter").addEventListener("change", function () {
+      const value = this.value;
+      document.querySelectorAll(".card").forEach(card => {
+        card.classList.toggle("hidden", value !== "all" && card.dataset.device !== value);
+      });
 
-<footer id="pageFooter">
-  Made with lots of ☕ & ❤️ by
-  <a href="https://github.com/ATOMNFT" target="_blank" rel="noopener noreferrer">ATOMNFT</a>
-</footer>
+      checkFooterVisibility();
+    });
 
+    window.addEventListener("scroll", checkFooterVisibility);
+    window.addEventListener("resize", checkFooterVisibility);
+    window.addEventListener("load", checkFooterVisibility);
+
+    loadCards();
+  </script>
 </body>
 </html>
