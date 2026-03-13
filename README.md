@@ -12,12 +12,11 @@ Welcome to the **ESP32 Firmware Dashboard** — your one-stop destination for fl
 
 
 
-<div style="display:inline-flex; align-items:center; gap:8px;">
-  <span style="font-size:24px; line-height:1;">👉</span>
-  <a href="https://atomnft.github.io/AtomNFTs-Firmware-Dashboard" target="_blank" rel="noopener noreferrer">
-    <img src="Images/dashboard-button.png" alt="Dashboard" width="200" height="140" style="display:block;">
-  </a>
-</div>
+<a href="https://atomnft.github.io/AtomNFTs-Firmware-Dashboard" target="_blank" rel="noopener noreferrer"
+   style="display:inline-flex; align-items:center; gap:8px; text-decoration:none;">
+  <span style="font-size:24px; line-height:1; position:relative; top:-2px;">👉</span>
+  <img src="Images/dashboard-button.png" alt="Dashboard" width="200" height="140" style="display:block;">
+</a>
 
 ---
 
