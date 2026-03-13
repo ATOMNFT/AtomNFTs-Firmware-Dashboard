@@ -10,10 +10,17 @@ Welcome to the **ESP32 Firmware Dashboard** — your one-stop destination for fl
 
 ## 🌐 Live Site
 
- Visit the Dashboard now:  
-👉 <a href="https://atomnft.github.io/AtomNFTs-Firmware-Dashboard" target="_blank" rel="noopener noreferrer">
+👉 Visit the Dashboard now:  
+<a href="https://atomnft.github.io/AtomNFTs-Firmware-Dashboard" target="_blank" rel="noopener noreferrer">
   <img src="Images/dashboard-button.png" alt="Dashboard" width="200" height="140">
 </a>
+
+<div style="display:inline-flex; align-items:center; gap:8px;">
+  <span style="font-size:24px; line-height:1;">👉</span>
+  <a href="https://atomnft.github.io/AtomNFTs-Firmware-Dashboard" target="_blank" rel="noopener noreferrer">
+    <img src="Images/dashboard-button.png" alt="Dashboard" width="200" height="140" style="display:block;">
+  </a>
+</div>
 
 ---
 
