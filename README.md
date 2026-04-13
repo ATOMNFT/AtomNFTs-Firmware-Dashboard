@@ -25,7 +25,7 @@ Welcome to the **ESP32 Firmware Dashboard**. Your one-stop destination for flash
 | **ESP32-S2 Mini**  | 
 | **ESP32 WROOM**    |
 | **CYD (Cheap Yellow Display)**   |
-| **Lilygo T-Embed (non cc1101) |
+| **Lilygo T-Embed (non cc1101)**  |
 
 ---
 
