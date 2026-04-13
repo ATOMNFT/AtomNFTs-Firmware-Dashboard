@@ -2,7 +2,7 @@
 
 # 🚀 ESP32 Firmware Dashboard
 
-Welcome to the **ESP32 Firmware Dashboard** Your one-stop destination for flashing, exploring, and deploying firmware across a variety of ESP32-based devices.
+Welcome to the **ESP32 Firmware Dashboard**. Your one-stop destination for flashing, exploring, and deploying firmware across a variety of ESP32-based devices.
 
 ✨ Built with style, speed, and simplicity in mind.
 
